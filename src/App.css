@@ -1,38 +1,536 @@
-.App {
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+
+/* Preferred box-sizing value */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* Reapply the pointer cursor for anchor tags */
+
+a,
+button {
+  cursor: revert;
+}
+
+
+/* Remove list styles (bullets/numbers) */
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+
+/* For images to not be able to exceed their container */
+
+img {
+  max-width: 100%;
+}
+
+
+/* removes spacing between cells in tables */
+
+table {
+  border-collapse: collapse;
+}
+
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+
+/* revert the 'white-space' property for textarea elements on Safari */
+
+textarea {
+  white-space: revert;
+}
+
+
+/* minimum style to allow to style meter element */
+
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+
+/* reset default text opacity of input placeholder */
+
+::placeholder {
+  color: unset;
+}
+
+
+/* fix the feature of 'hidden' attribute.
+ display:revert; revert to element instead of attribute */
+
+:where([hidden]) {
+  display: none;
+}
+
+
+/* revert for bug in Chromium browsers
+ - fix for the content editable attribute will work properly.
+ - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+
+:where([contenteditable]:not([contenteditable="false"])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  background-color: #f5f5f5;
+}
+
+.main-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  width: auto;
+  height: 100px;
+  background-color: #ffffff;
+}
+
+.nav-wrapper {
+  display: flex;
+  padding: 0 30px;
+}
+
+.items-center {
+  display: flex;
+  align-items: center;
+}
+
+.logo-header {
+  display: flex;
+  font-family: 'Manrope', sans-serif;
+  color: #ffffff;
+  width: 30%;
+}
+
+.primary-navigation {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  font-family: 'Manrope', sans-serif;
+  color: #ff0f0f;
+  width: 70%;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.logo {
+  width: 10rem;
+  height: auto;
+}
+
+.nav-button {
+  background-color: #dffe02;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Manrope', sans-serif;
+  color: #3f334d;
+  font-weight: 500;
+  border-radius: 10rem;
+}
+
+.nav-button:hover {
+  background-color: #dffe02;
+  color: #000000;
+}
+
+.nav-items {
+  gap: 2rem;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  color: #3f334d;
+}
+
+.nav-items a:hover {
+  color: #7d8491;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+.margin-control {
+  margin: 0;
+}
+
+.hero-wrapper {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  position: relative;
+  height: 86vh;
+  background-color: #3f334d;
+}
+
+.hero-contents {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 30px 30px;
+}
+
+.hero-title {
+  align-items: center;
+  color: #f5f5f5;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 1rem + 8vw, 7rem);
+  font-weight: 600;
+  text-align: center;
+  line-height: normal;
+}
+
+.text-italic {
+  font-family: inherit;
+  color: #dffe02;
+}
+
+.hero-paragraph {
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  color: #eeeeee;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: 300;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero-button {
+  padding: 1.2em 4em;
+  font-family: 'Manrope', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 500;
+  /* border: 1px solid; */
+  border-radius: 10rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hero-button:hover {
+  background-color: #dffe02;
+  color: #000000;
+  border: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.about-section {
+  box-sizing: border-box;
+  width: inherit;
+  height: 744px;
+}
+
+.about-section-wrapper {
+  height: inherit;
+  margin: 12px;
+}
+
+.abt-img-content {
+  background-image: url(images/abt-sctn-img.png);
+  background-size: cover;
+  width: 50%;
+  height: inherit;
+  margin-right: 6px;
+}
+
+.abt-text-content {
+  background-color: #574b60;
+  width: 50%;
+  height: inherit;
+  padding: 24px 24px;
+  flex-direction: column;
+  margin-left: 6px;
+}
+
+.heading-1 {
+  justify-content: flex-start;
+  width: 100%;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  color: #dffe02;
+  font-size: clamp(2rem, .75rem + 10vw, 1.5rem);
+  height: 50%;
+}
+
+.heading-2 {
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  height: 50%;
+  gap: 1rem;
+}
+
+.abt-head {
+  justify-content: flex-start;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 2rem, 1rem);
+}
+
+.abt-para {
+  line-height: 1.8;
+  font-size: clamp(1.2rem, 1.2rem, 1.2rem);
+  color: #d8d8d8;
+}
+
+.footer-section {
+  width: inherit;
+  top: 12px;
+  position: relative;
+  background-color: #ffffff;
+}
+
+.footer-container {
+  min-height: 380px;
+}
+
+.footer-contact-wrap {
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  padding: 30px 30px;
+}
+
+.footer-item {
+  flex: 1 200px;
+  justify-content: space-between;
+  height: inherit;
+}
+
+.footer-item:nth-child(2) {
+  flex: 2;
+}
+
+#footer-logo {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
+  gap: 0.875rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #969696;
+}
+
+#footer-logo img {
+  width: 10rem;
+}
+
+#contact-details {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.875rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #969696;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.contact-info>p:nth-child(2) {
+  padding-top: 0.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#contact-details h2 {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #171717;
+}
+
+#social-links {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  gap: 0.875rem;
+  font-family: 'Manrope', sans-serif;
+}
+
+.align-items {
+  align-items: flex-end;
+}
+
+#social-links h2 {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #171717;
+}
+
+.social-items {
+  gap: 0.75rem;
+}
+
+.social-link {
+  background-color: #e1fe02a8;
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
+.copy-info {
+  min-height: 100px;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 0.1px solid #b3b3b3;
+  color: #b3b3b3;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 200;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .primary-navigation {
+      display: none;
+      position: absolute;
+      z-index: 31;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
   }
-  to {
-    transform: rotate(360deg);
+  .primary-navigation[data-visible] {
+      display: flex;
+  }
+  .nav-links {
+      justify-content: center;
+  }
+  .nav-items {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #dffe02;
+      width: 100vw;
+      height: 100vh;
+      gap: 2rem;
+      font-size: 3rem;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 300;
+  }
+  .mobile-nav-toggle {
+      position: relative;
+      z-index: 40;
+      display: flex;
+      width: 50%;
+      justify-content: flex-end;
+      align-items: center;
+      cursor: pointer;
+  }
+  .logo-header {
+      width: 50%;
+  }
+  .hero-wrapper {
+      max-height: 1080px;
+  }
+  .nav-wrapper {
+      display: flex;
+      padding: 0 16px;
+  }
+  .hero-contents {
+      padding: 0px 18px;
+  }
+  #img-hide {
+      display: none;
+  }
+  .abt-text-content {
+      text-align: center;
+      width: 100%;
+      height: inherit;
+      padding: 18px 18px;
+      padding-bottom: 24px;
+      margin-left: 0px;
+  }
+  .heading-1 {
+      justify-content: center;
+      height: 30%;
+  }
+  .heading-2 {
+      justify-content: flex-end;
+      align-items: center;
+      height: 70%;
+  }
+  .nav-button {
+      display: none;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .footer-contact-wrap {
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 16px 16px;
+  }
+  .footer-item {
+      flex: 1 200px;
+      justify-content: space-between;
+      height: inherit;
+  }
+  .footer-item:nth-child(2) {
+      flex: 2;
+  }
+  #footer-logo {
+      justify-content: center;
+      text-align: center;
+  }
+  #footer-logo {
+      align-items: center;
+  }
+  #social-links {
+      justify-content: center;
+  }
+  #social-links {
+      align-items: center;
   }
 }
