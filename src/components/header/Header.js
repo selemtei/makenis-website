@@ -55,7 +55,7 @@ function Header(){
           id="nav-hide"
         >
           <div className="nav-links flex">
-            <ul className="flex nav-items " role="menubar ">
+            <ul className="flex nav-items " role="menubar">
               {
                 menuItems.map((item) => (
                   <li className="list-item" role="navigation" key={item.href}>

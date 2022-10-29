@@ -442,6 +442,7 @@ main {
   }
   .primary-navigation[data-visible] {
       display: flex;
+      margin-left: -16px;
   }
   .nav-links {
       justify-content: center;

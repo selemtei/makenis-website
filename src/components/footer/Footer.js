@@ -19,7 +19,7 @@ export default function Footer(){
           </div>
           <div className="footer-item align-items" id="social-links">
             <h2>OUR OTHER BUSINESSES</h2>
-            <h4><a href="https://risetravelstz.com">RISE TRAVELS</a></h4>
+            <h4><a href="https://risetravelstz.com" target="_blank">RISE TRAVELS</a></h4>
           </div>
         </div>
       </div>
